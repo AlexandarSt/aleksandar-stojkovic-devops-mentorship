@@ -1,23 +1,23 @@
 ## Linux commands used for TASK-2: OverTheWire - bandit-labs
 ```
-<span style="color:grey">**ls -la**</style> 
+**ls -la**</style> 
 - list directory contents with all files and folders (even hidden) in long listing format
-<span style="color:grey">**cat**</style> 
+**cat** 
 - concatenate files and print on the standard output
-<span style="color:grey">**cat ./<dash filename>** **_(cat < <dash filename>)_**</style> 
+**cat ./<dash filename>** **_(cat < <dash filename>)_** 
 - commands used to read files that start with a dash
-<span style="color:grey">**cat "./spaces in this filename"**</style> 
+**cat "./spaces in this filename"** 
 - if we want to read a file that consists of spaces, we need to put that file in quotation marks
-<span style="color:grey">**cd**</style> 
+**cd** 
 - change directory command that allow us to switch working directory
-<span style="color:grey">**file**</style> 
+**file** 
 - determine file type
-<span style="color:grey">**find**</style> 
+**find** 
 - search for files in a directory hierarchy
-<span style="color:grey">**grep**</style> 
+**grep** 
 - print lines that match patterns
-<span style="color:grey">**uniq -u**</style> 
+**uniq -u** 
 - reports or omits repeated lines (option -u finds unique lines)
-<span style="color:grey">**strings**</style> 
+**strings** 
 - print the sequences of printable characters in files
 ```
