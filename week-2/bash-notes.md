@@ -1,6 +1,6 @@
 ## Linux commands used for TASK-2: OverTheWire - bandit-labs
 ```
-**ls -la**</style> 
+**ls -la**
 - list directory contents with all files and folders (even hidden) in long listing format
 **cat** 
 - concatenate files and print on the standard output
