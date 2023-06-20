@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  KeyName:
+    Type: String
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instances
+    ConstraintDescription: must be the name of an existing EC2 KeyPair
+Resources:
+  WebServerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for the web server
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+  DatabaseSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for the MySQL database
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+  WebServerInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-097c5239e879ff531
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      SecurityGroupIds:
+        - !Ref WebServerSecurityGroup
+      Tags:
+        - Key: Name
+          Value: task-12-web-server-cf
+        - Key: CreatedBy
+          Value: aleksandar.stojkovic
+        - Key: Project
+          Value: task-12
+        - Key: IaC
+          Value: CloudFormation
+  DatabaseInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0e36672228a8d4984
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      SecurityGroupIds:
+        - !Ref DatabaseSecurityGroup
+      Tags:
+        - Key: Name
+          Value: task-12-db-server-cf
+        - Key: CreatedBy
+          Value: aleksandar.stojkovic
+        - Key: Project
+          Value: task-12
+        - Key: IaC
+          Value: CloudFormation  
+
