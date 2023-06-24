@@ -1,0 +1,31 @@
+---
+- name: Provision Nginx and MySQL
+  hosts: task-12-db-server-tf, task-12-db-server-cf
+  become: true
+  become_method: sudo
+  file:
+        path: /home/alex/ansible/aleksandar-stojkovic-web-server-key-2.pem
+        mode: '0400'
+  tasks:
+    - name: Install MySQL
+      dnf:
+        name: mysql-server
+        state: latest
+
+    - name: Enable and start MySQL
+      service:
+        name: mysql
+        state: started
+        enabled: true
+
+    - name: Create task-12-db database
+      mysql_db:
+        name: task-12-db
+        state: present
+
+    - name: Create task-12-user MySQL user
+      mysql_user:
+        name: task-12-user
+        password: task-12-password
+        priv: 'task-12-db.*:ALL'
+        state: present
